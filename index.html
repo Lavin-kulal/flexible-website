@@ -1,110 +1,338 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link type="text/css" rel="stylesheet" href="stylesheet.css" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HistoryDen - Exploring World History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #9c9f84;
+            margin: 0;
+            font-family: Verdana, Georgia, serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        #header {
+            background-color: #5c755e;
+            margin: 10px;
+            padding: 90px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        #header h3 {
+            font-size: 250%;
+            color: #e5e4d7;
+            text-align: center;
+            font-family: "Century Gothic", sans-serif;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+        }
+
+        #navbar ul {
+            background-color: #000;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            list-style: none;
+            text-align: center;
+        }
+
+        #navbar ul li {
+            display: inline;
+        }
+
+        #navbar ul li a {
+            color: #fff;
+            padding: 0.2em 1em;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        #navbar ul li a:hover {
+            color: #000;
+            background-color: #fff;
+        }
+
+        .container {
+            display: flex;
+            margin: 10px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .main {
+            background-color: #e5e4d7;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 110%;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .sidebar-container {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sideright {
+            background-color: #e5e4d7;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 105%;
+            width: 100%;
+        }
+
+        .imagesidebar {
+            border-radius: 5px;
+            width: 100%;
+            height: 300px;
+            opacity: 1.0;
+            transition: opacity 0.5s ease-in-out;
+            background: linear-gradient(45deg, #bdc3c7, #ecf0f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .imagesidebar:hover {
+            opacity: 0.4;
+        }
+
+        h1 {
+            font-size: 120%;
+            color: #ce282e;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #ce282e;
+        }
+
+        h2 {
+            font-size: 120%;
+            color: darkblue;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 250%;
+            color: #e5e4d7;
+            text-align: center;
+            font-family: "Century Gothic", sans-serif;
+            margin: 0;
+        }
+
+        .main p {
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .sideright p {
+            margin-bottom: 8px;
+            padding: 5px 0;
+            border-bottom: 1px solid #d4d3c6;
+            color: #555;
+        }
+
+        .sideright p:last-child {
+            border-bottom: none;
+        }
+
+        #footer {
+            background-color: #5c755e;
+            margin: 10px;
+            height: auto;
+            min-height: 60px;
+            clear: both;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 90%;
+            padding: 15px;
+        }
+
+        #footer ul {
+            margin: 10px 0;
+            padding: 5px;
+            border-radius: 5px;
+            list-style: none;
+            text-align: center;
+        }
+
+        #footer ul li {
+            display: inline;
+            margin: 0 5px;
+        }
+
+        #footer ul li a {
+            color: #efe5d0;
+            padding: 0.2em 1em;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            background-color: #5c755e;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        #footer ul li a:hover {
+            color: #000;
+            background-color: #fff;
+        }
+
+        .copyright {
+            margin-top: 10px;
+            color: #efe5d0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar-container {
+                width: 100%;
+            }
+            
+            #header {
+                padding: 60px 20px;
+            }
+            
+            #header h3 {
+                font-size: 200%;
+            }
+            
+            #navbar ul li {
+                display: block;
+                margin: 5px 0;
+            }
+            
+            .main {
+                font-size: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header id="header">
+        <h3>HistoryDen.com</h3>
+    </header>
 
-<div id="header">
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#ancient-greece">Ancient Greece</a></li>
+            <li><a href="#ancient-rome">Ancient Rome</a></li>
+            <li><a href="#world-war-i">World War I</a></li>
+        </ul>
+    </nav>
 
-   <h3> hystoryden.com</h3>
+    <div class="container">
+        <main class="main">
+            <section id="world-war-i">
+                <h1>World War I</h1>
+                <p>
+                    Germany's strategy for a war on two fronts against France and Russia was to rapidly concentrate the bulk of its army in the West to defeat France within 6 weeks, then shift forces to the East before Russia could fully mobilize; this was later known as the Schlieffen Plan. On August 2nd, Germany demanded free passage through Belgium, an essential element in achieving a quick victory over France.
+                </p>
+                <p>
+                    When this was refused, German forces invaded Belgium on August 3rd and declared war on France the same day. The Belgian government invoked the 1839 Treaty of London and, in compliance with its obligations under this treaty, Britain declared war on Germany on August 4th. On August 12th, Britain and France also declared war on Austria-Hungary, while on August 23rd, Japan sided with Britain, seizing German possessions in China and the Pacific.
+                </p>
+                <p>
+                    In November 1914, the Ottoman Empire entered the war on the side of Austria-Hungary and Germany, opening fronts in the Caucasus, Mesopotamia, and the Sinai Peninsula. The war was fought across each power's colonial empire, spreading the conflict to Africa and across the globe.
+                </p>
+            </section>
 
-</div>
+            <section id="us-entry">
+                <h1>U.S. Entry into World War I, 1917</h1>
+                <p>
+                    On April 2, 1917, President Woodrow Wilson went before a joint session of Congress to request a declaration of war against Germany. Wilson cited Germany's violation of its pledge to suspend unrestricted submarine warfare in the North Atlantic and the Mediterranean, as well as its attempts to entice Mexico into an alliance against the United States, as his reasons for declaring war.
+                </p>
+                <p>
+                    On April 4, 1917, the U.S. Senate voted in support of the measure to declare war on Germany. The House concurred two days later. The United States later declared war on German ally Austria-Hungary on December 7, 1917.
+                </p>
+                <p>
+                    Germany's resumption of submarine attacks on passenger and merchant ships in 1917 became the primary motivation behind Wilson's decision to lead the United States into World War I. Following the sinking of the Sussex in March 1916, Wilson threatened to sever diplomatic relations with Germany unless they refrained from attacking passenger ships. The German Government accepted these terms in what became known as the "Sussex Pledge."
+                </p>
+            </section>
 
-<div id="navbar">
+            <section id="world-war-ii">
+                <h1>World War II</h1>
+                <p>
+                    Japan, which aimed to dominate Asia and the Pacific, was at war with the Republic of China by 1937. In December 1941, Japan attacked American and British territories with near-simultaneous offensives against Southeast Asia and the Central Pacific, including an attack on the US fleet at Pearl Harbor which forced the US to declare war against Japan.
+                </p>
+                <p>
+                    Japan soon captured much of the western Pacific, but its advances were halted in 1942 after losing the critical Battle of Midway. Later, Germany and Italy were defeated in North Africa and at Stalingrad in the Soviet Union. Key setbacks in 1943 cost the Axis powers their initiative and forced them into strategic retreat on all fronts.
+                </p>
+            </section>
 
- <ul>
-     <li><a href="">Home</a></li>
-      <li><a href="">Ancient Greece</a></li>
-       <li><a href="">Ancient Rome</a></li>
-        <li><a href="">World war I</a></li>
- </ul>
-  
-</div>
+            <section id="wwii-end">
+                <h1>The End of World War II</h1>
+                <p>
+                    On May 8, 1945, World War II in Europe came to an end. As news of Germany's surrender reached the rest of the world, joyous crowds gathered to celebrate in the streets, clutching newspapers that declared Victory in Europe (V-E Day). Later that year, US President Harry S. Truman announced Japan's surrender and the end of World War II.
+                </p>
+                <p>
+                    On September 2, 1945, formal surrender documents were signed aboard the USS Missouri, designating the day as the official Victory over Japan Day (V-J Day). More than 400,000 Americans gave their lives to secure our nation's freedom, and in the midst of celebration, there was recognition that the true meaning of the day was best represented by those who were not present to celebrate.
+                </p>
+            </section>
+        </main>
 
-<div class="sideright">
+        <aside class="sidebar-container">
+            <div class="sideright">
+                <h2>Southern Theatres</h2>
+                <p>4.4.1 - War in the Balkans</p>
+                <p>4.4.2 - Ottoman Empire</p>
+                <p>4.4.3 - Italian Participation</p>
+                <p>4.4.4 - Romanian Participation</p>
+                <p>4.4.5 - Eastern Mediterranean</p>
+            </div>
 
-<h2> Southern theatres</h2>
+            <div class="sideright">
+                <h2>Western Front</h2>
+                <p>4.5.1 - Trench Warfare</p>
+                <p>4.5.2 - Battle of Verdun</p>
+                <p>4.5.3 - Battle of the Somme</p>
+                <p>4.5.4 - Spring Offensive</p>
+                <p>4.5.5 - Allied Victory</p>
+            </div>
 
-<p>4.4.1 - War in the Balkans</P>
-<p>4.4.2 - Ottoman Empire</P>
-<p>4.4.3 - Italian participation</P>
-<p>4.4.4 - Romanian participation</P>
-<p>4.4.5 -  War in the Balkans</P>
+            <div class="imagesidebar">
+                Historical Image
+                <br>
+                WWI Battlefield Scene
+            </div>
+        </aside>
+    </div>
 
-</div>
-
-<div class="sideright">
-
-<h2> Southern theatres 2</h2>
-
-<p>4.4.1 - War in the Balkans 2</P>
-<p>4.4.2 - Ottoman Empire 2</P>
-<p>4.4.3 - Italian participation 2</P>
-<p>4.4.4 - Romanian participation 2</P>
-<p>4.4.5 -  War in the Balkans 2</P>
-
-</div>
-
-<div>
-
-<img class="imagesidebar" src="JGy4b0.jpg" width="300" height="300">
-
-</div>
-
-
-<div class="main">
-
-<h1> World War I</h1>
-<p>
-Germany's strategy for a war on two fronts against France and Russia was to rapidly concentrate the bulk of its army in the West to defeat France within 6 weeks, then shift forces to the East before Russia could fully mobilise; this was later known as the Schlieffen Plan.[17] On 2 August, Germany demanded free passage through Belgium, an essential element in achieving a quick victory over France.[18] When this was refused, German forces invaded Belgium on 3 August and declared war on France the same day; the Belgian government invoked the 1839 Treaty of London and, in compliance with its obligations under this treaty, Britain declared war on Germany on 4 August. On 12 August, Britain and France also declared war on Austria-Hungary; on 23 August, Japan sided with Britain, seizing German possessions in China and the Pacific. In November 1914, the Ottoman Empire entered the war on the side of Austria-Hungary and Germany, opening fronts in the Caucasus, Mesopotamia, and the Sinai Peninsula. The war was fought in (and drew upon) each power's colonial empire also, spreading the conflict to Africa and across the globe.
-Germany's strategy for a war on two fronts against France and Russia was to rapidly concentrate the bulk of its army in the West to defeat France within 6 weeks, then shift forces to the East before Russia could fully mobilise; this was later known as the Schlieffen Plan.[17] On 2 August, Germany demanded free passage through Belgium, an essential element in achieving a quick victory over France.[18] When this was refused, German forces invaded Belgium on 3 August and declared war on France the same day; the Belgian government invoked the 1839 Treaty of London and, in compliance with its obligations under this treaty, Britain declared war on Germany on 4 August. On 12 August, Britain and France also declared war on Austria-Hungary; on 23 August, Japan sided with Britain, seizing German possessions in China and the Pacific. In November 1914, the Ottoman Empire entered the war on the side of Austria-Hungary and Germany, opening fronts in the Caucasus, Mesopotamia, and the Sinai Peninsula. The war was fought in (and drew upon) each power's colonial empire also, spreading the conflict to Africa and across the globe.
-</p>
-
-<h1> World War II</h1>
-<p>
-Japan, which aimed to dominate Asia and the Pacific, was at war with the Republic of China by 1937. In December 1941, Japan attacked American and British territories with near-simultaneous offensives against Southeast Asia and the Central Pacific, including an attack on the US fleet at Pearl Harbor which forced the US to declare war against Japan; the European Axis powers declared war on the US in solidarity. Japan soon captured much of the western Pacific, but its advances were halted in 1942 after losing the critical Battle of Midway; later, Germany and Italy were defeated in North Africa and at Stalingrad in the Soviet Union. Key setbacks in 1943—including a series of German defeats on the Eastern Front, the Allied invasions of Sicily and the Italian mainland, and Allied offensives in the Pacific—cost the Axis powers their initiative and forced it into strategic retreat on all fronts. In 1944, the Western Allies invaded German-occupied France, while the Soviet Union regained its territorial losses and turned towards Germany and its allies. During 1944 and 1945, Japan suffered reversals in mainland Asia, while the Allies crippled the Japanese Navy and captured key western Pacific islands.
-Japan, which aimed to dominate Asia and the Pacific, was at war with the Republic of China by 1937. In December 1941, Japan attacked American and British territories with near-simultaneous offensives against Southeast Asia and the Central Pacific, including an attack on the US fleet at Pearl Harbor which forced the US to declare war against Japan; the European Axis powers declared war on the US in solidarity. Japan soon captured much of the western Pacific, but its advances were halted in 1942 after losing the critical Battle of Midway; later, Germany and Italy were defeated in North Africa and at Stalingrad in the Soviet Union. Key setbacks in 1943—including a series of German defeats on the Eastern Front, the Allied invasions of Sicily and the Italian mainland, and Allied offensives in the Pacific—cost the Axis powers their initiative and forced it into strategic retreat on all fronts. In 1944, the Western Allies invaded German-occupied France, while the Soviet Union regained its territorial losses and turned towards Germany and its allies. During 1944 and 1945, Japan suffered reversals in mainland Asia, while the Allies crippled the Japanese Navy and captured key western Pacific islands.
-</p>
-
-</div>
-
-
-<div class="main">
-
-<h1>U.S. Entry into World War I, 1917</h1>
-<p>
-On April 2, 1917, President Woodrow Wilson went before a joint session of Congress to request a declaration of war against Germany. Wilson cited Germany’s violation of its pledge to suspend unrestricted submarine warfare in the North Atlantic and the Mediterranean, as well as its attempts to entice Mexico into an alliance against the United States, as his reasons for declaring war. On April 4, 1917, the U.S. Senate voted in support of the measure to declare war on Germany. The House concurred two days later. The United States later declared war on German ally Austria-Hungary on December 7, 1917.
-Germany’s resumption of submarine attacks on passenger and merchant ships in 1917 became the primary motivation behind Wilson’s decision to lead the United States into World War I. Following the sinking of an unarmed French boat, the Sussex, in the English Channel in March 1916, Wilson threatened to sever diplomatic relations with Germany unless the German Government refrained from attacking all passenger ships and allowed the crews of enemy merchant vessels to abandon their ships prior to any attack. On May 4, 1916, the German Government accepted these terms and conditions in what came to be known as the “Sussex pledge.”
-Germany’s resumption of submarine attacks on passenger and merchant ships in 1917 became the primary motivation behind Wilson’s decision to lead the United States into World War I. Following the sinking of an unarmed French boat, the Sussex, in the English Channel in March 1916, Wilson threatened to sever diplomatic relations with Germany unless the German Government refrained from attacking all passenger ships and allowed the crews of enemy merchant vessels to abandon their ships prior to any attack. On May 4, 1916, the German Government accepted these terms and conditions in what came to be known as the “Sussex pledge.”
-Germany’s resumption of submarine attacks on passenger and merchant ships in 1917 became the primary motivation behind Wilson’s decision to lead the United States into World War I. Following the sinking of an unarmed French boat, the Sussex, in the English Channel in March 1916, Wilson threatened to sever diplomatic relations with Germany unless the German Government refrained from attacking all passenger ships and allowed the crews of enemy merchant vessels to abandon their ships prior to any attack. On May 4, 1916, the German Government accepted these terms and conditions in what came to be known as the “Sussex pledge.”
-
-
-
-</p>
-
-<h1>The End of World War II</h1>
-<p>
-The National WWII Museum pays tribute to the historic anniversaries, as well as the myriad servicemembers and Home Front workers who helped preserve freedom and democracy. Through an ongoing series of digital programming, the Museum will reflect on the legacy and meaning of the end of World War II, bringing audiences distance learning programs, articles, featured artifacts, podcasts, and video content featuring scholars, Museum historians and curators, and oral histories from the Museum’s collection. Learn with us wherever you are.
-On May 8, 1945, World War II in Europe came to an end. As the news of Germany’s surrender reached the rest of the world, joyous crowds gathered to celebrate in the streets, clutching newspapers that declared Victory in Europe (V-E Day). Later that year, US President Harry S. Truman announced Japan’s surrender and the end of World War II. The news spread quickly and celebrations erupted across the United States. On September 2, 1945, formal surrender documents were signed aboard the USS Missouri, designating the day as the official Victory over Japan Day (V-J Day).
-V-J Day was especially momentous—the gruesome and exhausting war was officially over—but the day was also bittersweet for the many Americans whose loved ones would not be returning home. “More than 400,000 Americans gave their lives to secure our nation’s freedom, and in the midst of exultation, there was recognition that the true meaning of the day was best represented by those who were not present to celebrate,” said Robert Citino, PhD, Executive Director of the Institute for the Study of War and Democracy at The National WWII Museum.
-Seventy-six years later, The National WWII Museum will pay tribute to the historic anniversaries, as well as the myriad servicemembers and Home Front workers who helped preserve freedom and democracy.
-</p>
-
-</div>
-
-<div id="footer">
-  
-    <ul>
-     <li><a href="">About history</a></li>
-      <li><a href="">Caseers</a></li>
-       <li><a href="">Help</a></li>
-        <li><a href="">Contact Us</a></li>
- </ul>
-
-
- &copy; 2014 Historyden.com. All rights Reserved.
-</div>
-
+    <footer id="footer">
+        <ul>
+            <li><a href="#about">About History</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#help">Help</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <div class="copyright">
+            &copy; 2024 HistoryDen.com. All Rights Reserved.
+        </div>
+    </footer>
 </body>
 </html>
