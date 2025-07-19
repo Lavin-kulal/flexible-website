@@ -129,7 +129,8 @@
             left: 100%;
         }
 
-        #navbar ul li a:hover {
+        #navbar ul li a:hover,
+        #navbar ul li a:focus {
             color: #000;
             background: linear-gradient(135deg, #fff, #f0f0f0);
             transform: translateY(-2px);
@@ -352,7 +353,8 @@
             position: relative;
         }
 
-        .sideright p:hover {
+        .sideright p:hover,
+        .sideright p:focus {
             color: #2c3e50;
             padding-left: 10px;
             background: rgba(92, 117, 94, 0.05);
@@ -406,7 +408,8 @@
             position: relative;
         }
 
-        #footer ul li a:hover {
+        #footer ul li a:hover,
+        #footer ul li a:focus {
             color: #000;
             background: linear-gradient(135deg, #fff, #f0f0f0);
             transform: translateY(-3px);
@@ -477,6 +480,30 @@
             100% { opacity: 0; visibility: hidden; }
         }
 
+        /* Skip to content link for accessibility */
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 100;
+        }
+
+        .skip-to-content:focus {
+            top: 6px;
+        }
+
+        /* Focus styles for better keyboard navigation */
+        a:focus, 
+        .sideright p:focus {
+            outline: 2px solid #ce282e;
+            outline-offset: 2px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -507,18 +534,30 @@
                 height: 200px;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
     <div class="loading-overlay">
         <div class="loading-spinner"></div>
     </div>
 
     <header id="header">
-        <h3>HistoryDen.com</h3>
+        <h1>HistoryDen.com</h1>
     </header>
 
-    <nav id="navbar">
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#ancient-greece">Ancient Greece</a></li>
@@ -528,9 +567,9 @@
     </nav>
 
     <div class="container">
-        <main class="main">
+        <main class="main" id="main-content">
             <section id="world-war-i">
-                <h1>World War I</h1>
+                <h2>World War I</h2>
                 <p>
                     Germany's strategy for a war on two fronts against France and Russia was to rapidly concentrate the bulk of its army in the West to defeat France within 6 weeks, then shift forces to the East before Russia could fully mobilize; this was later known as the Schlieffen Plan. On August 2nd, Germany demanded free passage through Belgium, an essential element in achieving a quick victory over France.
                 </p>
@@ -543,7 +582,7 @@
             </section>
 
             <section id="us-entry">
-                <h1>U.S. Entry into World War I, 1917</h1>
+                <h2>U.S. Entry into World War I, 1917</h2>
                 <p>
                     On April 2, 1917, President Woodrow Wilson went before a joint session of Congress to request a declaration of war against Germany. Wilson cited Germany's violation of its pledge to suspend unrestricted submarine warfare in the North Atlantic and the Mediterranean, as well as its attempts to entice Mexico into an alliance against the United States, as his reasons for declaring war.
                 </p>
@@ -556,7 +595,7 @@
             </section>
 
             <section id="world-war-ii">
-                <h1>World War II</h1>
+                <h2>World War II</h2>
                 <p>
                     Japan, which aimed to dominate Asia and the Pacific, was at war with the Republic of China by 1937. In December 1941, Japan attacked American and British territories with near-simultaneous offensives against Southeast Asia and the Central Pacific, including an attack on the US fleet at Pearl Harbor which forced the US to declare war against Japan.
                 </p>
@@ -566,7 +605,7 @@
             </section>
 
             <section id="wwii-end">
-                <h1>The End of World War II</h1>
+                <h2>The End of World War II</h2>
                 <p>
                     On May 8, 1945, World War II in Europe came to an end. As news of Germany's surrender reached the rest of the world, joyous crowds gathered to celebrate in the streets, clutching newspapers that declared Victory in Europe (V-E Day). Later that year, US President Harry S. Truman announced Japan's surrender and the end of World War II.
                 </p>
@@ -578,27 +617,25 @@
 
         <aside class="sidebar-container">
             <div class="sideright">
-                <h2>Southern Theatres</h2>
-                <p>4.4.1 - War in the Balkans</p>
-                <p>4.4.2 - Ottoman Empire</p>
-                <p>4.4.3 - Italian Participation</p>
-                <p>4.4.4 - Romanian Participation</p>
-                <p>4.4.5 - Eastern Mediterranean</p>
+                <h3>Southern Theatres</h3>
+                <p tabindex="0">4.4.1 - War in the Balkans</p>
+                <p tabindex="0">4.4.2 - Ottoman Empire</p>
+                <p tabindex="0">4.4.3 - Italian Participation</p>
+                <p tabindex="0">4.4.4 - Romanian Participation</p>
+                <p tabindex="0">4.4.5 - Eastern Mediterranean</p>
             </div>
 
             <div class="sideright">
-                <h2>Western Front</h2>
-                <p>4.5.1 - Trench Warfare</p>
-                <p>4.5.2 - Battle of Verdun</p>
-                <p>4.5.3 - Battle of the Somme</p>
-                <p>4.5.4 - Spring Offensive</p>
-                <p>4.5.5 - Allied Victory</p>
+                <h3>Western Front</h3>
+                <p tabindex="0">4.5.1 - Trench Warfare</p>
+                <p tabindex="0">4.5.2 - Battle of Verdun</p>
+                <p tabindex="0">4.5.3 - Battle of the Somme</p>
+                <p tabindex="0">4.5.4 - Spring Offensive</p>
+                <p tabindex="0">4.5.5 - Allied Victory</p>
             </div>
 
             <div class="imagesidebar">
-                Historical Image
-                <br>
-                WWI Battlefield Scene
+                <img src="/JGy4b0.jpg" alt="WWI Battlefield Scene" style="width: 100%; height: 100%; object-fit: cover; border-radius: 5px;">
             </div>
         </aside>
     </div>
